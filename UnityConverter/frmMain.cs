@@ -48,9 +48,13 @@ namespace UnityConverter
         {
             float result;
             if (float.TryParse(txtFrom.Text.ToString(), out result))
+            {
                 _input = result;
+            }
             else
+            {
                 _input = null;
+            }
 
             SetResult();
         }
@@ -58,15 +62,16 @@ namespace UnityConverter
         void SetResult()
         {
             if (_input != null && _conversionFactor != null)
+            {
                 txtUnityUnits.Text = (_input * _conversionFactor).ToString();
+            }
             else
+            {
                 txtUnityUnits.Text = "";
+            }
         }
 
-        private void cmdClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+
 
         private void rdioInches_CheckedChanged(object sender, EventArgs e)
         {
@@ -97,10 +102,15 @@ namespace UnityConverter
                     _conversionFactor = cConversionFactors.MetersToFeet;
                 }
                 else // rdioMiles must be checked
+                {
                     _conversionFactor = cConversionFactors.MilesToMeters;
+                }
             }
             if (!_fEnglishToUnity)
+            {
                 _conversionFactor = 1f / _conversionFactor;
+            }
+
             SetResult();
         }
 
@@ -109,5 +119,56 @@ namespace UnityConverter
             _fEnglishToUnity = chkFromEnglishtoUnity.Checked;
             setConversionFactor();
         }
+
+        private void cmdCopyValueToSummationList_Click(object sender, EventArgs e)
+        {
+            float value;
+            if (float.TryParse(txtUnityUnits.Text, out value))
+            {
+                lstSummation.Items.Add(value);
+            }
+            getSummationTotal();
+        }
+
+        void getSummationTotal()
+        {
+            float sum = 0f;
+            foreach (object item in lstSummation.Items)
+            {
+                sum += float.Parse(item.ToString());
+            }
+            txtTotal.Text = sum.ToString();
+        }
+
+        private void cmdRemoveSelectedItem_Click(object sender, EventArgs e)
+        {
+            if (lstSummation.Items.Count > 0)
+            {
+                // check if an item is selected
+                if (lstSummation.SelectedIndex > -1)
+                {
+                    lstSummation.Items.RemoveAt(lstSummation.SelectedIndex);
+                }
+                getSummationTotal();
+            }
+        }
+
+        private void cmdCopyUnityValue_Click(object sender, EventArgs e)
+        {
+            if (txtUnityUnits.Text.Length > 0)
+                System.Windows.Forms.Clipboard.SetText(txtUnityUnits.Text);
+        }
+
+        private void cmdCopyListTotal_Click(object sender, EventArgs e)
+        {
+            if (txtTotal.Text.Length > 0)
+                System.Windows.Forms.Clipboard.SetText(txtTotal.Text);
+        }
+
+        private void cmdClearAdditionList_Click(object sender, EventArgs e)
+        {
+            lstSummation.Items.Clear();
+            getSummationTotal();
+        }
     }
-    }
+}
