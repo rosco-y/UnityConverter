@@ -7,6 +7,7 @@ namespace UnityConverter
     {
         float? _conversionFactor = null;
         float? _input = null;
+        bool _fEnglishToUnity = true;
         public frmMain()
         {
             InitializeComponent();
@@ -14,32 +15,34 @@ namespace UnityConverter
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            rdioInches.Checked = true;
+            _conversionFactor = cConversionFactors.MetersToInches;
         }
 
-        private void cmbInputUnits_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string sUnits = cmbInputUnits.Items[cmbInputUnits.SelectedIndex].ToString();
+        //private void cmbInputUnits_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    string sUnits = cmbInputUnits.Items[cmbInputUnits.SelectedIndex].ToString();
 
-            switch (sUnits)
-            {
-                case "INCHES":
-                    _conversionFactor = cConversionFactors.MetersToInches;
-                    break;
+        //    switch (sUnits)
+        //    {
+        //        case "INCHES":
+        //            _conversionFactor = cConversionFactors.MetersToInches;
+        //            break;
 
-                case "FEET":
-                    _conversionFactor = cConversionFactors.MetersToFeet;
-                    break;
+        //        case "FEET":
+        //            _conversionFactor = cConversionFactors.MetersToFeet;
+        //            break;
 
-                case "MILES":
-                    _conversionFactor = cConversionFactors.MilesToMeters;
-                    break;
+        //        case "MILES":
+        //            _conversionFactor = cConversionFactors.MilesToMeters;
+        //            break;
 
-                default:
-                    _conversionFactor = null;
-                    break;
-            }
-            SetResult();
-        }
+        //        default:
+        //            _conversionFactor = null;
+        //            break;
+        //    }
+        //    SetResult();
+        //}
 
         private void txtFrom_TextChanged(object sender, EventArgs e)
         {
@@ -64,5 +67,47 @@ namespace UnityConverter
         {
             Close();
         }
+
+        private void rdioInches_CheckedChanged(object sender, EventArgs e)
+        {
+            setConversionFactor();
+        }
+
+        private void rdioFeet_CheckedChanged(object sender, EventArgs e)
+        {
+            setConversionFactor();
+        }
+
+        private void rdioMiles_CheckedChanged(object sender, EventArgs e)
+        {
+            setConversionFactor();
+        }
+
+        void setConversionFactor()
+        {
+
+            if (rdioInches.Checked)
+            {
+                _conversionFactor = cConversionFactors.MetersToInches;
+            }
+            else
+            {
+                if (rdioFeet.Checked)
+                {
+                    _conversionFactor = cConversionFactors.MetersToFeet;
+                }
+                else // rdioMiles must be checked
+                    _conversionFactor = cConversionFactors.MilesToMeters;
+            }
+            if (!_fEnglishToUnity)
+                _conversionFactor = 1f / _conversionFactor;
+            SetResult();
+        }
+
+        private void chkFromEnglishtoUnity_CheckedChanged(object sender, EventArgs e)
+        {
+            _fEnglishToUnity = chkFromEnglishtoUnity.Checked;
+            setConversionFactor();
+        }
     }
-}
+    }
