@@ -46,6 +46,24 @@
             this.cmdCopyUnityValue = new System.Windows.Forms.Button();
             this.cmdCopyListTotal = new System.Windows.Forms.Button();
             this.cmdClearAdditionList = new System.Windows.Forms.Button();
+            this.btnNumber = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.txtCalulatorResult = new System.Windows.Forms.TextBox();
+            this.cmdCopyValueToCalculator = new System.Windows.Forms.Button();
+            this.cmdDivide = new System.Windows.Forms.Button();
+            this.cmdMultiply = new System.Windows.Forms.Button();
+            this.cmdSubtract = new System.Windows.Forms.Button();
+            this.cmdAddition = new System.Windows.Forms.Button();
+            this.cmdEquals = new System.Windows.Forms.Button();
+            this.lstCalulatorWorkPad = new System.Windows.Forms.ListBox();
+            this.cmcClearCalculator = new System.Windows.Forms.Button();
             this.grpConertUnits.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -233,11 +251,222 @@
             this.cmdClearAdditionList.UseVisualStyleBackColor = true;
             this.cmdClearAdditionList.Click += new System.EventHandler(this.cmdClearAdditionList_Click);
             // 
+            // btnNumber
+            // 
+            this.btnNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNumber.Location = new System.Drawing.Point(141, 707);
+            this.btnNumber.Name = "btnNumber";
+            this.btnNumber.Size = new System.Drawing.Size(45, 45);
+            this.btnNumber.TabIndex = 19;
+            this.btnNumber.Text = "1";
+            this.btnNumber.UseVisualStyleBackColor = true;
+            this.btnNumber.Click += new System.EventHandler(this.btnNumber_Click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(192, 707);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(45, 45);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "2";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnNumber_Click);
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(243, 707);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(45, 45);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "3";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btnNumber_Click);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(141, 656);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(45, 45);
+            this.button3.TabIndex = 22;
+            this.button3.Text = "4";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.btnNumber_Click);
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(192, 656);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(45, 45);
+            this.button4.TabIndex = 23;
+            this.button4.Text = "5";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.btnNumber_Click);
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(243, 656);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(45, 45);
+            this.button5.TabIndex = 24;
+            this.button5.Text = "6";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.btnNumber_Click);
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(141, 605);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(45, 45);
+            this.button6.TabIndex = 25;
+            this.button6.Text = "7";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.btnNumber_Click);
+            // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(192, 605);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(45, 45);
+            this.button7.TabIndex = 26;
+            this.button7.Text = "8";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.btnNumber_Click);
+            // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(243, 605);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(45, 45);
+            this.button8.TabIndex = 27;
+            this.button8.Text = "9";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.btnNumber_Click);
+            // 
+            // txtCalulatorResult
+            // 
+            this.txtCalulatorResult.Location = new System.Drawing.Point(194, 520);
+            this.txtCalulatorResult.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCalulatorResult.Name = "txtCalulatorResult";
+            this.txtCalulatorResult.Size = new System.Drawing.Size(147, 26);
+            this.txtCalulatorResult.TabIndex = 28;
+            this.txtCalulatorResult.Text = "0";
+            this.txtCalulatorResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // cmdCopyValueToCalculator
+            // 
+            this.cmdCopyValueToCalculator.Location = new System.Drawing.Point(138, 510);
+            this.cmdCopyValueToCalculator.Name = "cmdCopyValueToCalculator";
+            this.cmdCopyValueToCalculator.Size = new System.Drawing.Size(49, 36);
+            this.cmdCopyValueToCalculator.TabIndex = 29;
+            this.cmdCopyValueToCalculator.Text = ">>";
+            this.cmdCopyValueToCalculator.UseVisualStyleBackColor = true;
+            this.cmdCopyValueToCalculator.Click += new System.EventHandler(this.cmdCopyValueToCalculator_Click);
+            // 
+            // cmdDivide
+            // 
+            this.cmdDivide.Location = new System.Drawing.Point(192, 555);
+            this.cmdDivide.Name = "cmdDivide";
+            this.cmdDivide.Size = new System.Drawing.Size(45, 45);
+            this.cmdDivide.TabIndex = 30;
+            this.cmdDivide.Text = "/";
+            this.cmdDivide.UseVisualStyleBackColor = true;
+            this.cmdDivide.Click += new System.EventHandler(this.cmdDivide_Click);
+            // 
+            // cmdMultiply
+            // 
+            this.cmdMultiply.Location = new System.Drawing.Point(243, 554);
+            this.cmdMultiply.Name = "cmdMultiply";
+            this.cmdMultiply.Size = new System.Drawing.Size(45, 45);
+            this.cmdMultiply.TabIndex = 31;
+            this.cmdMultiply.Text = "*";
+            this.cmdMultiply.UseVisualStyleBackColor = true;
+            this.cmdMultiply.Click += new System.EventHandler(this.cmdMultiply_Click);
+            // 
+            // cmdSubtract
+            // 
+            this.cmdSubtract.Location = new System.Drawing.Point(294, 554);
+            this.cmdSubtract.Name = "cmdSubtract";
+            this.cmdSubtract.Size = new System.Drawing.Size(45, 45);
+            this.cmdSubtract.TabIndex = 32;
+            this.cmdSubtract.Tag = "";
+            this.cmdSubtract.Text = "-";
+            this.cmdSubtract.UseVisualStyleBackColor = true;
+            this.cmdSubtract.Click += new System.EventHandler(this.cmdSubtract_Click);
+            // 
+            // cmdAddition
+            // 
+            this.cmdAddition.Location = new System.Drawing.Point(294, 605);
+            this.cmdAddition.Name = "cmdAddition";
+            this.cmdAddition.Size = new System.Drawing.Size(45, 45);
+            this.cmdAddition.TabIndex = 33;
+            this.cmdAddition.Tag = "";
+            this.cmdAddition.Text = "+";
+            this.cmdAddition.UseVisualStyleBackColor = true;
+            this.cmdAddition.Click += new System.EventHandler(this.cmdAddition_Click);
+            // 
+            // cmdEquals
+            // 
+            this.cmdEquals.Location = new System.Drawing.Point(296, 657);
+            this.cmdEquals.Name = "cmdEquals";
+            this.cmdEquals.Size = new System.Drawing.Size(45, 95);
+            this.cmdEquals.TabIndex = 34;
+            this.cmdEquals.Tag = "";
+            this.cmdEquals.Text = "=>";
+            this.cmdEquals.UseVisualStyleBackColor = true;
+            this.cmdEquals.Click += new System.EventHandler(this.cmdEquals_Click);
+            // 
+            // lstCalulatorWorkPad
+            // 
+            this.lstCalulatorWorkPad.FormattingEnabled = true;
+            this.lstCalulatorWorkPad.ItemHeight = 20;
+            this.lstCalulatorWorkPad.Location = new System.Drawing.Point(192, 388);
+            this.lstCalulatorWorkPad.Name = "lstCalulatorWorkPad";
+            this.lstCalulatorWorkPad.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lstCalulatorWorkPad.Size = new System.Drawing.Size(149, 124);
+            this.lstCalulatorWorkPad.TabIndex = 35;
+            // 
+            // cmcClearCalculator
+            // 
+            this.cmcClearCalculator.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmcClearCalculator.Location = new System.Drawing.Point(141, 555);
+            this.cmcClearCalculator.Name = "cmcClearCalculator";
+            this.cmcClearCalculator.Size = new System.Drawing.Size(45, 45);
+            this.cmcClearCalculator.TabIndex = 36;
+            this.cmcClearCalculator.Text = "C";
+            this.cmcClearCalculator.UseVisualStyleBackColor = true;
+            this.cmcClearCalculator.Click += new System.EventHandler(this.cmcClearCalculator_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(807, 549);
+            this.ClientSize = new System.Drawing.Size(807, 1196);
+            this.Controls.Add(this.cmcClearCalculator);
+            this.Controls.Add(this.lstCalulatorWorkPad);
+            this.Controls.Add(this.cmdEquals);
+            this.Controls.Add(this.cmdAddition);
+            this.Controls.Add(this.cmdSubtract);
+            this.Controls.Add(this.cmdMultiply);
+            this.Controls.Add(this.cmdDivide);
+            this.Controls.Add(this.cmdCopyValueToCalculator);
+            this.Controls.Add(this.txtCalulatorResult);
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnNumber);
             this.Controls.Add(this.cmdClearAdditionList);
             this.Controls.Add(this.cmdCopyListTotal);
             this.Controls.Add(this.cmdCopyUnityValue);
@@ -284,6 +513,24 @@
         private System.Windows.Forms.Button cmdCopyUnityValue;
         private System.Windows.Forms.Button cmdCopyListTotal;
         private System.Windows.Forms.Button cmdClearAdditionList;
+        private System.Windows.Forms.Button btnNumber;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.TextBox txtCalulatorResult;
+        private System.Windows.Forms.Button cmdCopyValueToCalculator;
+        private System.Windows.Forms.Button cmdDivide;
+        private System.Windows.Forms.Button cmdMultiply;
+        private System.Windows.Forms.Button cmdSubtract;
+        private System.Windows.Forms.Button cmdAddition;
+        private System.Windows.Forms.Button cmdEquals;
+        private System.Windows.Forms.ListBox lstCalulatorWorkPad;
+        private System.Windows.Forms.Button cmcClearCalculator;
     }
 }
 

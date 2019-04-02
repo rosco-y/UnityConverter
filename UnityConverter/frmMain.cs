@@ -17,6 +17,8 @@ namespace UnityConverter
         {
             rdioInches.Checked = true;
             _conversionFactor = cConversionFactors.MetersToInches;
+            operation = eOperator.eNone;
+
         }
 
         //private void cmbInputUnits_SelectedIndexChanged(object sender, EventArgs e)
@@ -153,16 +155,41 @@ namespace UnityConverter
             }
         }
 
+        #region CALCULATOR
+        enum eOperator
+        {
+            eNone,
+            eAddition,
+            dSubtraction,
+            eMultiplication,
+            eDivision,
+        };
+
+        enum eStates
+        {
+            eNone,
+            eOperater1,
+            eOperater2,
+            eEquals
+        }
+        eOperator operation;
+        eStates state = eStates.eOperater1;
+        float op1, op2, result = 0f;
+
         private void cmdCopyUnityValue_Click(object sender, EventArgs e)
         {
             if (txtUnityUnits.Text.Length > 0)
+            {
                 System.Windows.Forms.Clipboard.SetText(txtUnityUnits.Text);
+            }
         }
 
         private void cmdCopyListTotal_Click(object sender, EventArgs e)
         {
             if (txtTotal.Text.Length > 0)
+            {
                 System.Windows.Forms.Clipboard.SetText(txtTotal.Text);
+            }
         }
 
         private void cmdClearAdditionList_Click(object sender, EventArgs e)
@@ -170,5 +197,176 @@ namespace UnityConverter
             lstSummation.Items.Clear();
             getSummationTotal();
         }
+
+        private void btnNumber_Click(object sender, EventArgs e)
+        {
+            if (txtCalulatorResult.Text == "0")
+            {
+                txtCalulatorResult.Text = "";
+            }
+
+            txtCalulatorResult.Text += (sender as Button).Text;
+        }
+
+        private void cmdCopyValueToCalculator_Click(object sender, EventArgs e)
+        {
+            txtCalulatorResult.Text = txtUnityUnits.Text;
+        }
+
+        
+        string sOperator()
+        {
+            string ret = "";
+            switch (operation)
+            {
+                case eOperator.dSubtraction:
+                    ret = "-";
+                    break;
+                case eOperator.eAddition:
+                    ret = "+";
+                    break;
+                case eOperator.eDivision:
+                    ret = "/";
+                    break;
+                case eOperator.eMultiplication:
+                    ret = "*";
+                    break;
+                default:
+                    break;
+            }
+            return ret;
+        }
+        bool SetOperator(eOperator e)
+        {
+            bool success = false;
+            if (state == eStates.eOperater1)
+            {
+                success = float.TryParse(txtCalulatorResult.Text, out op1);
+                if (success)
+                {
+                    operation = e;
+                    lstCalulatorWorkPad.Items.Add(txtCalulatorResult.Text);
+                    state = eStates.eOperater2;
+                }
+            }
+            else
+            {
+                if (state == eStates.eOperater2)
+                {
+                    success = float.TryParse(txtCalulatorResult.Text, out op2);
+                    if (success)
+                    {
+                        operation = e;
+                        lstCalulatorWorkPad.Items.Add(txtCalulatorResult.Text);
+                        state = eStates.eOperater2;
+                    }
+                }
+            }
+            if (success)
+            {
+                // INDICATE OPERATION IN WORKPAD.
+                lstCalulatorWorkPad.Items.Add(sOperator());
+            }
+            return success;
+        }
+
+        private void cmdDivide_Click(object sender, EventArgs e)
+        {
+            if (SetOperator(eOperator.eDivision))
+            {
+                //lstCalulatorWorkPad.Items.Add(txtCalulatorResult.Text);
+                txtCalulatorResult.Text = "";
+            }
+        }
+
+        private void cmdMultiply_Click(object sender, EventArgs e)
+        {
+            if (SetOperator(eOperator.eMultiplication))
+            {
+                //lstCalulatorWorkPad.Items.Add(txtCalulatorResult.Text);
+                txtCalulatorResult.Text = "";
+            }
+        }
+
+
+        private void cmdSubtract_Click(object sender, EventArgs e)
+        {
+            if (SetOperator(eOperator.dSubtraction))
+            {
+                //lstCalulatorWorkPad.Items.Add(txtCalulatorResult.Text);
+                txtCalulatorResult.Text = "";
+            }
+        }
+
+        private void cmcClearCalculator_Click(object sender, EventArgs e)
+        {
+            lstCalulatorWorkPad.Items.Clear();
+            txtCalulatorResult.Text = "";
+            op1 = op2 = result = 0f;
+        }
+
+        private void cmdAddition_Click(object sender, EventArgs e)
+        {
+
+            if (SetOperator(eOperator.eAddition))
+            {
+                //lstCalulatorWorkPad.Items.Add(txtCalulatorResult.Text);
+                txtCalulatorResult.Text = "";
+            }
+        }
+
+        private void cmdEquals_Click(object sender, EventArgs e)
+        {
+            if (txtCalulatorResult.Text.Length > 0)
+            {
+                if (state == eStates.eOperater2)    
+                {
+                    if (float.TryParse(txtCalulatorResult.Text, out op2))
+                    {
+                        if (op1 != 0f && op2 != 0f)
+                        {
+                            switch (operation)
+                            {
+                                case eOperator.dSubtraction:
+                                    result = op1 - op2;
+                                    break;
+                                case eOperator.eAddition:
+                                    result = op1 + op2;
+                                    break;
+                                case eOperator.eDivision:
+                                    if (op2 != 0)
+                                    {
+                                        result = op1 / op2;
+                                    }
+                                    else
+                                    {
+                                        txtCalulatorResult.Text = "DIV BY 0.";
+                                    }
+                                    break;
+                                case eOperator.eMultiplication:
+                                    result = op1 * op2;
+                                    break;
+                                default:
+                                    break;
+                            } // switch
+                        }
+
+                        if (result != 0)
+                        {
+                            txtCalulatorResult.Text = result.ToString();
+                            
+                            op1 = result; // for continued calculations
+                            op2 = result = 0f;
+                            state = eStates.eOperater2;
+
+                            lstSummation.Items.Add(txtCalulatorResult.Text);
+                            getSummationTotal();
+                        }
+                    } // valid op1 and op2
+                }
+            }
+        }
+        #endregion
     }
 }
+
